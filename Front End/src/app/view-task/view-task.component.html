@@ -1,0 +1,35 @@
+<div class="container">
+  Task: <input class="col-md-5" type="text" [(ngModel)]="taskFilterProp.task">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  Parent Task: <input class="col-md-5" type="text" [(ngModel)]="taskFilterProp.parentTask"> <br><br>
+  Priority From:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="col-md-1" type="number" [(ngModel)]="taskFilterProp.priority">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  Priority To:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="col-md-1" type="number" [(ngModel)]="taskFilterProp.priority">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  Start Date:&nbsp;&nbsp;&nbsp;<input class="col-md-2" type="date" [(ngModel)]="taskFilterProp.startDate">&nbsp;&nbsp;&nbsp;
+  End Date:&nbsp;&nbsp;&nbsp;<input class="col-md-2" type="date" [(ngModel)]="taskFilterProp.endDate"><br>
+</div>
+<div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Task</th>
+        <th>Parent Task</th>
+        <th>Priority</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let taskob of taskList | filterBy : taskFilterProp">
+        <td>{{ taskob.task }}</td>
+        <td>{{ taskob.parentTask }}</td>
+        <td>{{ taskob.priority }}</td>
+        <td>{{ taskob.startDate | date}}</td>
+        <td>{{ taskob.endDate | date}}</td>
+        <td><button *ngIf="taskob.finished == 'N'" (click)="editTask(taskob.taskId)">Edit</button></td>
+        <td><button *ngIf="taskob.finished == 'N'" (click)="deleteTask(taskob.taskId)">Delete</button></td>
+        <td><button *ngIf="taskob.finished == 'N'" (click)="finishTask(taskob.taskId)">End Task</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

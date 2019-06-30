@@ -1,0 +1,29 @@
+<div>
+    <form [formGroup]="addForm">
+        <div class="form-group">
+            <label for="task">Task:</label>
+            <input type="text" formControlName="task" placeholder="Task" name="task" class="form-control" id="task">
+        </div>
+        <div class="form-group">
+            <label for="priority">Priority:</label>
+            <input type="hidden" formControlName="priority" name="priority" class="form-control" id="priority">
+            <ng5-slider [(value)]="value" [options]="options"></ng5-slider>
+        </div>
+        <div class="form-group">
+            <label for="parentTask">Parent Task:</label>
+            <input type="text" formControlName="parentTask" placeholder="Parent Task" name="parentTask" class="form-control"
+                id="parentTask">
+        </div>
+        <div class="form-group">
+            <label for="startDate">Start Date:</label>
+            <input type="date" formControlName="startDate" name="startDate" class="form-control" id="startDate">
+        </div>
+        <div class="form-group">
+            <label for="endDate">End Date:</label>
+            <input type="date" formControlName="endDate" name="endDate" class="form-control" id="endDate">
+        </div>
+
+        <button class="btn" (click)="addTask()">Add Task</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button class="btn" (click)="resetTask()">Reset</button>
+    </form>
+</div>
